@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 class MainClass {
   public static void Main (string[] args) {
@@ -17,14 +18,19 @@ class MainClass {
           }
           int astLeft=astString.Length;
           char[] astStringArray = astString.ToCharArray();
+          // bool[] found = new bool[astString.Length];
           Console.WriteLine();
           Console.WriteLine("Let's Start the Game");
           int attemptCount=0;
-          while(astLeft>0){
+
+
+          while(astStringArray.Count(c => c=='*') > 0){
             Console.WriteLine("Choose your character");
             char character = char.Parse(Console.ReadLine().ToUpper());
             attemptCount++;
             bool guess=false;
+
+
             for(int i=0; i<randomString.Length; i++){
               if(randomString[i]==character){
                 guess=true;
@@ -41,6 +47,8 @@ class MainClass {
             }
             guess=false;
           }
+
+
           Console.WriteLine();
           Console.WriteLine($"Great, You found all the characters in {attemptCount} guesses" );
           attemptCount=0;
